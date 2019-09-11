@@ -1,17 +1,28 @@
 <template>
     <b-col md="6">
-        <h1 class="text-capitalize border-bottom">product1</h1>
-        <div class="my-4"><img src="http://smktesting.herokuapp.com/static/img1.png" class="rounded">
+        <h1 class="text-capitalize border-bottom">{{ product.title }}</h1>
+        <div class="my-4"><img :src="imgLink" class="rounded">
         </div>
-        <div class="border-top"><h3 class="h4">Product Description</h3>
-            <p>lorem ipsum 1</p>
+        <div class="border-top"><h3 class="h4">Product description</h3>
+            <p>{{ product.text }}</p>
         </div>
     </b-col>
 </template>
 
 <script>
     export default {
-        name: "ProductCard"
+        name: "ProductCard",
+        props:{
+            product:{
+                type: Object,
+                required:true
+            }
+        },
+        computed:{
+            imgLink(){
+                return `http://smktesting.herokuapp.com/static/${this.product.img}`
+            }
+        }
     }
 </script>
 

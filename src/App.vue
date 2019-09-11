@@ -2,9 +2,12 @@
     <div>
         <Header :products="products"/>
         <b-container>
-            <b-row class="my-3">
-                <ProductCard/>
+            <b-row class="my-3" v-if="selectedProduct">
+                <ProductCard :product="selectedProduct"/>
                 <Reviews />
+            </b-row>
+            <b-row class="my-3" v-else>
+                <h3>No products yet</h3>
             </b-row>
         </b-container>
     </div>
@@ -35,7 +38,8 @@
                         "img": "img2.png",
                         "text": "lorem ipsum 2"
                     }
-                ]
+                ],
+                selectedProduct:null
             }
         }
     }
